@@ -1,0 +1,13 @@
+/*
+  My Openhab items file
+*/
+
+Color	Sonoff_B1_col		"Sonoff B1 RGB"	<colorlight>	[ "Lighting" ] 	{mqtt=">[mosquitto:Sonoff_B1/state:command:*:default],<[mosquitto:Sonoff_B1/state:state:default]"}
+String	Sonoff_B1_col_str	"Sonoff B1 string"								{mqtt=">[mosquitto:Sonoff_B1/RGB:command:*:default]"}
+
+Dimmer Sonoff_B1_light 	"Sonoff B1 light" <light>  [ "Lighting" ] 		{mqtt=">[mosquitto:Sonoff_B1/DIM:command:*:default],<[mosquitto:Sonoff_B1/DIM:state:default]"}
+Dimmer Sonoff_B1_temp	"Sonoff B1 temp" <light>  [ "Lighting" ] 		{mqtt=">[mosquitto:Sonoff_B1/WW:command:*:default],<[mosquitto:Sonoff_B1/WW:state:default]"}
+
+Switch Sonoff_B1_scene1	"Sonoff B1 scene1"	<colorlight> [ "Switchable" ]	{mqtt=">[mosquitto:Sonoff_B1/scene1:command:*:default],<[mosquitto:Sonoff_B1/scene1:state:default]"}
+Switch Sonoff_B1_scene2	"Sonoff B1 scene2"	<colorlight> [ "Switchable" ]	{mqtt=">[mosquitto:Sonoff_B1/scene2:command:*:default],<[mosquitto:Sonoff_B1/scene2:state:default]"}
+Switch Sonoff_B1_scene3	"Sonoff B1 scene3"	<colorlight> [ "Switchable" ]	{mqtt=">[mosquitto:Sonoff_B1/scene3:command:*:default],<[mosquitto:Sonoff_B1/scene3:state:default]"}
