@@ -1,0 +1,13 @@
+/*
+  My Openhab Sitemap
+*/
+sitemap sonoffB1 label="sonoff-B1"
+{
+	Frame label="sonoff-B1" 
+	{
+		Switch item=Sonoff_B1_light 
+		Slider item=Sonoff_B1_light 
+		Slider item=Sonoff_B1_temp 
+		Colorpicker item=Sonoff_B1_col 
+	}
+}
