@@ -1,0 +1,53 @@
+/*
+  My Openhab rules file
+*/
+var HSBType hsbValue2
+var int redValue2
+var int greenValue2
+var int blueValue2
+var String RGBvalues2
+ 
+rule "Sonoff B1 Set RGB 2 value"
+when
+	Item Sonoff_B1_col received command or
+	Item Sonoff_B1_col changed
+then
+	hsbValue2 = Sonoff_B1_col.state as HSBType 
+ 
+	redValue2 = hsbValue2.red.intValue
+	greenValue2 = hsbValue2.green.intValue
+	blueValue2 = hsbValue2.blue.intValue
+
+	RGBvalues2= redValue2.toString + "," + greenValue2.toString + "," + blueValue2.toString
+	sendCommand(Sonoff_B1_col_str, RGBvalues2)
+   
+	logInfo("Sonoff_B1 rule", RGBvalues2)
+end
+
+rule "Sonoff B1 translate command ON to white values"
+when
+	Item Sonoff_B1_light received command ON
+then
+	sendCommand(Sonoff_B1_light, 100)
+	sendCommand(Sonoff_B1_temp, 100)
+	   
+	logInfo("Sonoff_B1 rule", "Command Google ON translated 100")
+end
+
+rule "Sonoff B1 dimmer OFF to 0"
+when
+	Item Sonoff_B1_light received command OFF
+then
+	sendCommand(Sonoff_B1_light, 0)
+   
+	logInfo("Sonoff_B1 rule", "change dimmer OFF to value 0")
+end
+
+rule "Sonoff B1 color temp ON to 100"
+when
+	Item Sonoff_B1_temp received command ON
+then
+	sendCommand(Sonoff_B1_temp, 100)
+   
+	logInfo("Sonoff_B1 rule", "change temp ON to value 100")
+end
